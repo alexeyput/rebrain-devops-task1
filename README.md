@@ -36,7 +36,7 @@
     Java app available at address: **<web-server-IP/FQDN>:8091**
 
 ##  Prerequisites
-1. Deploy management station:
+1. Deploy management station:  
 _Initialize terraform providers_
 ```
    terraform plan
