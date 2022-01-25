@@ -1,9 +1,10 @@
 # Rebrain DevOps practicum
 ## Task 4 - GIT 04
-![Task](https://gitlab.rebrainme.com/devops_users_repos/3500/rebrain-devops-task1/-/blob/master/img/git04-task.png?raw=true)
+![Task](https://github.com/alexeyput/rebrain-devops-task1/blob/master/img/git04-task.png?raw=true)
 
-## Description
-Full pipeline to create an infrastructure and deploy applications
+## Client's request
+> Create full pipeline to deploying an infrastructure as well as applications in docker containers   
+> Management servers must be deployed with minimal manual intervention
 
 #### Languages used to create applications:
 - Python
@@ -36,23 +37,23 @@ Full pipeline to create an infrastructure and deploy applications
 
 ##  Prerequisites
 1. Deploy management station:
-Initialize terraform providers
+_Initialize terraform providers_
 ```
    terraform plan
 ```
-To create plan and simulate infrastructure creation
+_To create plan and simulate infrastructure creation_
 ```
    terraform plan
 ```
-To perform infrastructure creation
+_To perform infrastructure creation_
 ```
    terraform apply [-auto-approve]
 ```
-To delete created infrastructure.
-**NOTE. S3 Bucket will not be deleted in case of having stored objects. Please check and delete manually if it necessary.**
+_To delete created infrastructure._    
 ```
    terraform destroy [-auto-approve]
-```
+```   
+**NOTE. S3 Bucket will not be deleted in case of having stored objects. Please check and delete manually if it necessary.**
 2. Install or update the following Jenkins plugins (more information on [Jenkins User Documentation](https://www.jenkins.io/doc/)):
    - HTTP Request Plugin
    - Credentials
@@ -62,18 +63,15 @@ To delete created infrastructure.
    - Email Extension Plugin
 4. Create the following security entities in Jenkins:
 
-| ID                  | Kind                          | Description                                        | 
-|---------------------|-------------------------------|----------------------------------------------------| 
-| gitlab              | Username with password        | Username/password for Gitlab repository            |
-| nexus-credentials   | Username with password        | Username/password for Nexus repository             | 
-| aws-key-pair        | SSH Username with private key | Username and private key to access to Ec2 instance |
-| Secret_Access_Key   | Secret text                   | AWS Secret access key                              |
-| Access_Key_ID       | Secret text                   | AWS Access Key ID                                  |
-| telegramToken       | Secret text                   | Telegram Bot token                                 |
-| telegramChatId      | Secret text                   | Telegram Chat Id for notofications                 |
-| Gmail *             | Username with password        | Email login password for notifications             |
-| snyk-gitlab-token * | nexus-credentials             | Token for Snyk integration                         |
-* Not used in this project
+|  ID               | Kind                          | Description                                        | 
+|-------------------|-------------------------------|----------------------------------------------------| 
+| gitlab            | Username with password        | Username/password for Gitlab repository            |
+| nexus-credentials | Username with password        | Username/password for Nexus repository             | 
+| aws-key-pair      | SSH Username with private key | Username and private key to access to Ec2 instance |
+| Secret_Access_Key | Secret text                   | AWS Secret access key                              |
+| Access_Key_ID     | Secret text                   | AWS Access Key ID                                  |
+| telegramToken     | Secret text                   | Telegram Bot token                                 |
+| telegramChatId    | Secret text                   | Telegram Chat Id for notofications                 |
 5. Create Jenkins pipeline and point it to Git repository
 6. Copy private keys to your Jenkins server
 7. Edit parameters mentioned in "Configuration files and parameters" section
@@ -132,5 +130,3 @@ To delete created infrastructure.
 |------------------------------|---------------------------------------------|
 | ansible_ssh_private_key_file | Private key used to connect to Ec2 instance |
 | ansible_user                 | Username used to connect to Ec2 instance    |
-
-
