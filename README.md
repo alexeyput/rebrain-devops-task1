@@ -37,6 +37,7 @@
 
 ##  Prerequisites
 1. Deploy management station:  
+
 _Initialize terraform providers_
 ```
    terraform plan
